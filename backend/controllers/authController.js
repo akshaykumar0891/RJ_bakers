@@ -70,6 +70,14 @@ const loginUser = async (req, res) => {
     const user = await User.findOne({ where: { email } });
 
     if (user && (await user.comparePassword(password))) {
+      // Promote to admin if email matches the configured ADMIN_EMAIL but role is not yet admin
+      const adminEmail = process.env.ADMIN_EMAIL || 'avanthivusirikala@gmail.com';
+      if (email.toLowerCase() === adminEmail.toLowerCase() && user.role !== 'admin') {
+        user.role = 'admin';
+        await user.save();
+        console.log(`Promoted ${email} to admin upon successful login`);
+      }
+
       res.json({
         id: user.id,
         name: user.name,
