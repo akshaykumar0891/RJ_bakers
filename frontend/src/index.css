@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #fffdfb; /* brand-cream */
+  color: #352e2c; /* brand-slate */
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Outfit', sans-serif;
+}
+
+/* Glassmorphism and premium design utility classes */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(229, 154, 147, 0.15); /* subtle pinkish border */
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(202, 157, 93, 0.1); /* subtle gold border */
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.95);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 24px -10px rgba(29, 19, 16, 0.15);
+  border-color: rgba(202, 157, 93, 0.3);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #ca9d5d 0%, #e59a93 100%); /* Gold to Pink gradient */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-btn {
+  background: linear-gradient(135deg, #ca9d5d 0%, #a87e45 100%);
+  transition: all 0.2s ease-in-out;
+}
+
+.gold-btn:hover {
+  background: linear-gradient(135deg, #a87e45 0%, #8b6431 100%);
+  box-shadow: 0 4px 14px rgba(202, 157, 93, 0.25);
+}
+
+.chocolate-btn {
+  background: linear-gradient(135deg, #1d1310 0%, #3a2721 100%);
+  transition: all 0.2s ease-in-out;
+}
+
+.chocolate-btn:hover {
+  background: linear-gradient(135deg, #3a2721 0%, #4d332c 100%);
+  box-shadow: 0 4px 14px rgba(29, 19, 16, 0.3);
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #fffdfb;
+}
+::-webkit-scrollbar-thumb {
+  background: #f8d1c5;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ca9d5d;
+}
