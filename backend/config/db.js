@@ -17,6 +17,11 @@ if (dbDialect === 'mysql' && process.env.DB_NAME) {
       port: process.env.DB_PORT || 3306,
       dialect: 'mysql',
       logging: false,
+      dialectOptions: process.env.DB_SSL === 'true' ? {
+        ssl: {
+          rejectUnauthorized: false
+        }
+      } : {},
       pool: {
         max: 5,
         min: 0,
