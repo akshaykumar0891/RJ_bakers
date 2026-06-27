@@ -60,9 +60,8 @@ const handleImageUpload = (fieldName) => {
         if (cloudinaryUrl) {
           req.file.url = cloudinaryUrl;
         } else {
-          // If Cloudinary is not configured or failed, use local URL path with server prefix
-          const serverUrl = process.env.SERVER_URL || `http://localhost:${process.env.PORT || 5000}`;
-          req.file.url = `${serverUrl}/uploads/${req.file.filename}`;
+          // Store relative path so frontend getImageUrl resolves it with correct BACKEND_URL
+          req.file.url = `/uploads/${req.file.filename}`;
         }
         next();
       } catch (error) {
@@ -99,8 +98,8 @@ const handleMultipleImagesUpload = (req, res, next) => {
           if (cloudinaryUrl) {
             file.url = cloudinaryUrl;
           } else {
-            const serverUrl = process.env.SERVER_URL || `http://localhost:${process.env.PORT || 5000}`;
-            file.url = `${serverUrl}/uploads/${file.filename}`;
+            // Store relative path so frontend getImageUrl resolves it with correct BACKEND_URL
+            file.url = `/uploads/${file.filename}`;
           }
         }
       }
