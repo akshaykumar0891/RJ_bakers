@@ -201,7 +201,7 @@ const AdminSettings = () => {
             value={bakeryAddress}
             onChange={(e) => setBakeryAddress(e.target.value)}
             className="block w-full border border-slate-200 rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-bakery-500"
-            placeholder="e.g. RJ Bakers, Shop No. 12, Baker Street, near Metro Station, New Delhi, Delhi 110001"
+            placeholder="e.g. Opposite Masjid, Jagadamba Center"
           />
           <p className="text-[10px] text-slate-400">This address will be stored for store references and shown to customers.</p>
         </div>

@@ -310,9 +310,9 @@ const getSettings = async (req, res) => {
         upiId: 'rjbakers@upi',
         phoneNumber: '+919876543210',
         qrImageUrl: '/uploads/default-qr.jpg',
-        bakeryEmail: 'rjbakers@gmail.com',
+        bakeryEmail: 'avanthivusirikala@gmail.com',
         deliverySlots: JSON.stringify(defaultSlots),
-        bakeryAddress: 'RJ Bakers, Shop No. 12, Baker Street, near Metro Station, New Delhi, Delhi 110001',
+        bakeryAddress: 'Opposite Masjid, Jagadamba Center',
         deliveryChargeType: 'free',
         deliveryChargeAmount: 0.00
       });

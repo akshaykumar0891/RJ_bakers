@@ -2,14 +2,28 @@ import { Link, Outlet, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useCart } from '../context/CartContext';
 import { ShoppingBag, User, LogOut, LayoutDashboard, Search, Menu, X } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import logoImg from '../assets/logo.jpg';
+import api from '../services/api';
 
 const CustomerLayout = () => {
   const { user, logout, isAdmin } = useAuth();
   const { getCartCount } = useCart();
   const navigate = useNavigate();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [settings, setSettings] = useState(null);
+
+  useEffect(() => {
+    const fetchSettings = async () => {
+      try {
+        const res = await api.get('/admin/settings');
+        setSettings(res.data);
+      } catch (err) {
+        console.error('Failed to load shop settings for footer:', err.message);
+      }
+    };
+    fetchSettings();
+  }, []);
 
   const handleLogout = () => {
     logout();
@@ -194,9 +208,16 @@ const CustomerLayout = () => {
             </div>
             <div>
               <h3 className="text-white font-bold text-lg mb-4">Contact Bakery</h3>
-              <p className="text-sm text-amber-200/70">📍 123 Baker Street, Sweet City</p>
-              <p className="text-sm text-amber-200/70 mt-1">📞 +91 98765 43210</p>
-              <p className="text-sm text-amber-200/70 mt-1">✉️ rjbakers@gmail.com</p>
+              <a
+                href="https://maps.app.goo.gl/Gk5ZiBMEsHC2kPT96"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm text-amber-200/70 hover:text-amber-300 transition flex items-center space-x-1"
+              >
+                <span>📍 {settings?.bakeryAddress || 'Opposite Masjid, Jagadamba Center'}</span>
+              </a>
+              <p className="text-sm text-amber-200/70 mt-1">📞 {settings?.phoneNumber || '+91 98765 43210'}</p>
+              <p className="text-sm text-amber-200/70 mt-1">✉️ {settings?.bakeryEmail || 'avanthivusirikala@gmail.com'}</p>
             </div>
           </div>
           <div className="mt-12 pt-8 border-t border-amber-900/50 text-center text-sm text-amber-200/40">
